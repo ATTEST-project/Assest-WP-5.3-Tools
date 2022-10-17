@@ -31,7 +31,7 @@ def update_table(path_ref_file,path_conf_file, years,var_list,var_time,var_name,
 	os.makedirs(saved_path, exist_ok=True)
 	saved_ref_path = os.path.join(saved_path, ref_filename)
 	ref_table.to_csv(f'{os.path.splitext(saved_ref_path)[0]}.csv', index=False)
-
+    
 	for i, year in enumerate(periods):
 		ref_values_updated[year] = {var_name: list(ref_table[var_name])}
 		if var_time:
@@ -72,8 +72,9 @@ def linear(init_values, years,n_periods, factor, iterations=100, variability = 1
 
 	return var
 
-def incremental(init_values, years, *args):
-	return np.array(init_values + years).astype(init_values.dtype)
-
+def incremental(init_values, years, n_periods, *args):
+    years = 5
+    ret = np.stack([init_values + years * (i + 1) for i in range(int(n_periods))])
+    return ret
 
 

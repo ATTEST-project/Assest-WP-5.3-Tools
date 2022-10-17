@@ -23,6 +23,7 @@ def sum(weight, dataset, column_name):
     return sum_data
 
 def tool5dot2_calculate(config, file_name, years, save_results_to):
+    saved_path = os.path.join('../Result/future_scen', file_name)
     periods = np.arange(0,years,5)+5
     n_periods = years/5
 
@@ -42,12 +43,27 @@ def tool5dot2_calculate(config, file_name, years, save_results_to):
         os.makedirs(save_results_to)
 
     data.to_csv(f'{save_results_to}/{file_name}.csv')
+    ref_data = data
 
     for i, year in enumerate(periods):
+        data = pd.DataFrame()
+        for i, cfg in enumerate(config):
+            name, ext = os.path.splitext(os.path.basename(cfg['path']))
+            filename = os.path.join(saved_path, f'{name}_{year}{ext}')
+            dataset = read_file1(filename, cfg['index'])
+
+            if i == 0:
+                data = sum([float(weight) for weight in cfg['weights']], dataset[cfg['variables']], cfg['config'].upper())
+            else:
+                data[cfg['config'].upper()] = sum([float(weight) for weight in cfg['weights']], dataset[cfg['variables']], cfg['config'].upper())
+
+        data['total indicator'.upper()] = data.sum(axis=1)/len(data.columns)
+        data = data.round(decimals=3)
+
         data.to_csv(f'{save_results_to}/{file_name}_{year}.csv')
 
-    data.sort_values('total indicator'.upper(), inplace=True, ascending=False)
+    ref_data.sort_values('total indicator'.upper(), inplace=True, ascending=False)
 
 
-    return data
+    return ref_data
 
