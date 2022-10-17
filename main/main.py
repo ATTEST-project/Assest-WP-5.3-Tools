@@ -1,6 +1,5 @@
 import sys
 from builtins import IndexError
-from tkinter.font import BOLD
 import qdarkstyle
 import os
 from datetime import datetime as dt
@@ -10,7 +9,6 @@ from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 from PySide2 import *
 import pandas as pd
-import xlrd
 from openpyxl import load_workbook
 from openpyxl.utils import *
 from PyQt5.QtCore import pyqtSignal, pyqtSlot
@@ -26,6 +24,8 @@ from pathlib import Path
 
 from functools import partial
 from scen_gen import update_table
+
+ROOT_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 class ActionTools(QWidget):
     def __init__(self):
@@ -46,7 +46,7 @@ class ActionTools(QWidget):
         self.logoTitleHLayout.setObjectName(u"fileBrowse1HLayout")
 
         self.lblLogo = QLabel(self)
-        pixmap = QPixmap('../HTML_ASSETS/resources/logo_white.png')
+        pixmap = QPixmap(os.path.join(ROOT_PATH, 'HTML_ASSETS/resources/logo_white.png'))
         self.lblLogo.setPixmap(pixmap)
         self.lblLogo.setScaledContents(True)
         self.lblLogo.setMaximumHeight(50)
@@ -236,7 +236,7 @@ class Tools52(QWidget):
         self.logoTitleHLayout.setObjectName(u"fileBrowse1HLayout")
 
         self.lblLogo = QLabel(self)
-        pixmap = QPixmap('../HTML_ASSETS/resources/logo_white.png')
+        pixmap = QPixmap(os.path.join(ROOT_PATH, 'HTML_ASSETS/resources/logo_white.png'))
         self.lblLogo.setPixmap(pixmap)
         self.lblLogo.setScaledContents(True)
         self.lblLogo.setMaximumHeight(50)
@@ -433,7 +433,7 @@ class Example(QWidget):
         self.logoTitleHLayout.setObjectName(u"fileBrowse1HLayout")
 
         self.lblLogo = QLabel(self)
-        pixmap = QPixmap('../HTML_ASSETS/resources/logo_white.png')
+        pixmap = QPixmap(os.path.join(ROOT_PATH, 'HTML_ASSETS/resources/logo_white.png'))
         self.lblLogo.setPixmap(pixmap)
         self.lblLogo.setScaledContents(True)
         self.lblLogo.setMaximumHeight(50)
