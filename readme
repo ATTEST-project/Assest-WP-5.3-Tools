@@ -1,0 +1,46 @@
+Description
+The Asset Management Tool is a comprehensive solution for asset analysis and management, offering an intuitive interface to configure and generate results from your asset data. It allows you to create customized dashboards to visualize and analyze assets based on various dimensions and variables.
+
+Inputs
+Select the config file form tool 5.2 and generate the result.
+
+after this open the Tool 5.2 button and select the folder generated from config file 
+
+
+Outputs
+The Asset Management Tool generates results in the form of dashboards. Each dashboard includes the following components:
+
+Menu of Grouped Assets: Group assets based on selected variables from the auxiliary file.
+
+Dimension Menu: Access different dimensions configured for your assets.
+
+Filter Menu: Filter assets based on their feature values.
+
+Restore Button: Revert the dashboard to its original state, discarding any applied filters.
+
+Pattern Graph: Visual representation of asset distribution within each pattern. Clicking on a pattern's title reveals a table with detailed information about the assets in that pattern.
+
+Log-out Button: Disconnect the server used to visualize the dashboard.
+
+How to Run It
+To run the Asset Management Tool, follow these steps:
+
+Load the Input Files:
+
+Provide the path to the dimension input file.
+Configure each dimension as needed, selecting variables, entering weights, and saving the dimension configuration.
+
+Generate Results:
+
+Once the dimensions are configured, click the "Generate Results" button to initiate the analysis process.
+Show Results:
+
+Start the local server by clicking the "Show Results" button to view the generated dashboards.
+The Asset Management Tool simplifies asset analysis and allows you to interact with the results through user-friendly dashboards. Explore and visualize your assets in a structured manner to make informed decisions.
+
+For further details and examples, refer to the documentation or user manual provided with the tool.
+
+
+
+
+
